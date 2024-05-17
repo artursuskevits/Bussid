@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #map {
+            height: 550px;
+            width: 1300px;
+            margin: 0 auto;
+            top: 70px;
+            left: 100px;
+        }
+
+             /* Basic styling for the navigation menu */
+         .navbar,.navbar2 {
+             width: 200px;
+             background-color: #f2f2f2;
+             padding: 20px;
+         }
+
+        /* Style for each individual link */
+        .navbar a , .navbar2 a{
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Hover effect for links */
+        .navbar a:hover, .navbar2 a:hover {
+            background-color: #ddd;
+        }
+        .btn-with-image {
+            background-image: url('1200px-Logo_Blue_Bus.svg.png');
+            background-size: 40px 40px;
+            background-position: left center;
+            background-repeat: no-repeat;
+            width: 200px;
+            height: 60px;
+            border: none;
+            cursor: pointer;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+<h1>World Map</h1>
+<div class="navbar">
+    <a href="Main.html">Tallinna Transport</a>
+    <a href="bussid.html">Bussid</a>
+    <a href="koolibussid.html">Kooli Bussid</a>
+</div>
+<div class="navbar2">
+    <a href="#">Uuringud</a>
+    <a href="teated.html">Teated</a>
+    <a href="uudisedtallinn.html">Uudised Tallinn</a>
+    <a href="Kontaktid.html">Kontaktid</a>
+    <a href="Piletid.html">Piletid</a>
+</div>
+<div id="avaleht">
+    <h3>Tõrked</h3>
+    <ul>
+        <li><button onclick="open24()" class="btn-with-image" >24 <h6>alates 16.05.2024 05:00</h6></button></li>
+        <li><button onclick="open52()" class="btn-with-image" >52<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li> <button onclick="open1()" class="btn-with-image" >1<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li> <button onclick="open11()" class="btn-with-image" >11<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li><button onclick="open3()" class="btn-with-image" >3<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li><button onclick="open15()" class="btn-with-image" >15<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li> <button onclick="open23()" class="btn-with-image" >23<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li><button onclick="open55()" class="btn-with-image" >55<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li> <button onclick="open37()" class="btn-with-image" >37<h6>alates 16.05.2024 05:00</h6></button></li>
+        <li><button onclick="open57()" class="btn-with-image" >57<h6>alates 16.05.2024 05:00</h6></button></li>
+    </ul>
+
+
+
+</div>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Initialize the map
+        var map = L.map('map').setView([59.4370, 24.7536], 13       );
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        }).addTo(map);
+
+        var bussicon = L.icon({
+            iconUrl: 'bussmarker.jpg', // URL to the marker icon image
+            iconSize: [30, 35], // size of the icon
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var Estoniapst = L.marker([59.4336, 24.7528], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var ViruKeskus = L.marker([59.43615,24.7555], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var Kaubumaja = L.marker([59.43478,24.75603], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var LinnuTee = L.marker([59.4145398,24.7085094], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var VabaduseValjak= L.marker([59.43314475830132,24.744848012924194], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var Silli= L.marker([59.40768803720479,24.702919721603397], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var Puhangu= L.marker([59.446105918660535,24.699411392211918], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var Lennujaam= L.marker([59.41816450738258,24.79925394058228], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var Mehaanikakool= L.marker([59.43565991715831,24.806120395660404], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+        var Kumu= L.marker([59.43528892934135,24.798181056976322        ], {
+            icon: bussicon,
+            description: "Estonia Peatus"
+        }).addTo(map);
+
+        Estoniapst.on('click', function (e) {
+            window.open('/peatused/Estonia.html', '_blank');
+        });
+        ViruKeskus.on('click', function (e) {
+            window.open('/peatused/ViruKeskus.html', '_blank');
+        });
+        Kaubumaja.on('click', function (e) {
+            window.open('/peatused/Kaubumaja.html', '_blank');
+        });
+        LinnuTee.on('click', function (e) {
+            window.open('/peatused/LinnuTee.html', '_blank');
+        });
+        VabaduseValjak.on('click', function (e) {
+            window.open('/peatused/VabaduseValjak.html', '_blank');
+        });
+        Silli.on('click', function (e) {
+            window.open('/peatused/Silli.html', '_blank');
+        });
+        Puhangu.on('click', function (e) {
+            window.open('/peatused/Puhangu.html', '_blank');
+        });
+        Lennujaam.on('click', function (e) {
+            window.open('/peatused/Lennujaam.html', '_blank');
+        });
+        Kumu.on('click', function (e) {
+            window.open('/peatused/KUMu.html', '_blank');
+        });
+        Mehaanikakool.on('click', function (e) {
+            window.open('/peatused/Mehanikakool.html', '_blank');
+        });
+
+
+
+
+
+
+        var apiKey = "3fc84d50-7bd4-4904-9a23-a50711c205f1";
+        var origin = "52.5200,13.4050"; // Example origin coordinates
+        var destination = "48.8566,2.3522"; // Example destination coordinates
+        var url = `https://graphhopper.com/api/1/route?point=${origin}&point=${destination}&vehicle=car&key=${apiKey}`;
+
+        $.get(url, function (data, status) {
+            if (status === "success" && data.paths && data.paths.length > 0) {
+                var points = data.paths[0].points.coordinates;
+                var polyline = L.polyline(points, { color: 'blue' }).addTo(map);
+            }
+        });
+    });
+    function open1() {
+        window.open('bussidpages/1.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open3() {
+        window.open('bussidpages/3.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open11() {
+        window.open('bussidpages/11.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open15() {
+        window.open('bussidpages/15.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open23() {
+        window.open('bussidpages/23.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open24() {
+        window.open('bussidpages/24.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open37() {
+        window.open('bussidpages/37.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open52() {
+        window.open('bussidpages/52.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open55() {
+        window.open('bussidpages/55.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+    function open57() {
+        window.open('bussidpages/57.html', '_blank'); // Replace 'new_page.html' with the URL of the page you want to open
+    }
+</script>
+</body>
+</html>
